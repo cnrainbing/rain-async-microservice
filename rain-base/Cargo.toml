@@ -1,8 +1,11 @@
 [package]
 name = "rain-base"
-version = "0.1.0"
+version = "1.0.0"
+authors = ["rainbing <cnrainbing@163.com>"]
 edition = "2018"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+serde = "1.0.130"
+md5 = "0.7.0"
