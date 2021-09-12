@@ -1,0 +1,6 @@
+[workspace]
+members = [
+    "rain-base",
+    "rain-dao",
+    "rain-service",
+]
