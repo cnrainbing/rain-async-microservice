@@ -2,5 +2,6 @@
 members = [
     "rain-base",
     "rain-dao",
+    "rain-model",
     "rain-service",
 ]
