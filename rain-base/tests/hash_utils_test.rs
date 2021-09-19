@@ -1,5 +1,5 @@
 
-use rain_base::hash::hash_utils::HashUtils;
+use rain_base::hash::HashUtils;
 
 ///测试密码 编码和解码
 #[test]

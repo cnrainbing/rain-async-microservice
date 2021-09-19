@@ -1,2 +1,2 @@
-mod user;
-pub use self::user::User;
+mod users;
+pub use self::users::{User,CreateUser};

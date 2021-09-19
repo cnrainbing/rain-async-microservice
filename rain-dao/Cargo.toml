@@ -9,7 +9,8 @@ edition = "2018"
 [dependencies]
 rain-base = { path = "../rain-base" }
 rain-model = { path = "../rain-model" }
-anyhow = "1.0"
-# sqlx = {version = "0.4.2", features = ["runtime-actix-native-tls", "uuid", "postgres", "chrono"]}
+anyhow = "1.0.44"
+# sqlx = {version = "0.5.7", features = ["runtime-actix-native-tls", "uuid", "postgres", "chrono"]}
 # tokio + rustls [runtime-tokio-native-tls or runtime-tokio-rustls or runtime-actix-native-tls or runtime-actix-rustls]
-sqlx = { version = "0.5", features = ["runtime-tokio-rustls", "mysql", "chrono"] }
+sqlx = { version = "0.5.7", features = ["runtime-tokio-native-tls", "mysql", "chrono"] }
+async-trait = "0.1.51"

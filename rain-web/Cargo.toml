@@ -1,0 +1,38 @@
+[package]
+name = "rain-web"
+
+description = """
+    rainbing
+"""
+license = "MIT/Apache-2.0"
+readme = "README.md"
+keywords = ["time", "human", "human-friendly", "parser", "duration"]
+homepage = "https://github.com/cnrainbing"
+repository = "https://github.com/cnrainbing/rain-async-microservice"
+documentation = "https://docs.rs/cnrainbing"
+categories = ["date-and-time"]
+
+version = "1.0.0"
+authors = ["rainbing <cnrainbing@163.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+rain-base = { path = "../rain-base" }
+rain-service = { path = "../rain-service" }
+rain-model = { path = "../rain-model" }
+serde = { version = "1.0.130", features = ["derive"] }
+serde_json = "1.0.67"
+serde-aux = "2.3.0"
+sqlx = { version = "0.5.7", features = ["runtime-tokio-native-tls", "mysql", "chrono"] }
+log = "0.4.14"
+log4rs = { version = "1.0.0", features = ["toml_format"] }
+anyhow = "1.0.44"
+config = "0.11.0"
+dotenv = "0.15.0"
+async-graphql = { version = "2.9.15", features = ["chrono", "apollo_tracing", "log"] }
+async-graphql-actix-web = "2.9.15"
+actix-rt = "2.2.0"
+actix-web = "3.3.2"
+lazy_static = "1.4.0"

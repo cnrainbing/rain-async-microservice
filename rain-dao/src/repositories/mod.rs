@@ -1,2 +1,2 @@
-mod user_repository;
-pub use self::user_repository::UserRepository;
+mod users_repository;
+pub use self::users_repository::{IUsersRepository,UserRepository};

@@ -1,0 +1,47 @@
+# 配置文件 默认加载 base 在 .env下指定 SERVER_ENVIRONMENT 来生效其他配置文件
+
+# 应用服务类配置
+[server]
+## 服务名称
+name = "rain-web"
+## HttpServer 绑定地址
+host = "127.0.0.1"
+## HttpServer 绑定端口
+port = 8080
+## 路径 非必填 默认/ "未实现"
+context_path = "/"
+## 健康检查 非必填 默认 /health_check
+health_check = "/health_check"
+
+# graphql 配置
+[graphql]
+## graphql访问路径
+path = "/graphql"
+## ApolloTracing 插件 是否开启
+tracing = true
+## graphiql UI 访问路径
+graphiql.path = "/graphiql"
+## graphiql UI 是否开启
+graphiql.enable = true
+
+# 数据库配置
+[database]
+## 数据库用户名
+username = "root"
+## 数据库密码
+password = "123456"
+## 数据地址
+host = "127.0.0.1"
+## 数据库端口
+port = 3306
+## 数据库名
+database_name = "finance_margin"
+## 数据库max连接数
+max_connections = 64
+## 数据库min连接数
+min_connections = 8
+
+# 日志配置
+[log]
+## 日志配置文件
+file = "log4rs.toml"
