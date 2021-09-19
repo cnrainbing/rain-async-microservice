@@ -26,16 +26,17 @@ serde = { version = "1.0.130", features = ["derive"] }
 serde_json = "1.0.67"
 serde-aux = "2.3.0"
 tokio = { version = "1.11.0", features = ["full"] }
-sqlx = { version = "0.5.7", features = ["runtime-actix-native-tls", "mysql", "chrono"] }
+sqlx = { version = "0.5.7", features = ["runtime-async-std-native-tls", "mysql", "chrono"] }
 log = "0.4.14"
 log4rs = { version = "1.0.0", features = ["toml_format"] }
 anyhow = "1.0.44"
 config = "0.11.0"
 dotenv = "0.15.0"
-async-graphql = { version = "2.9.15", features = ["chrono", "apollo_tracing", "log"] }
-async-graphql-actix-web = "2.9.15"
+async-graphql = { version = "2.10.0", features = ["chrono", "apollo_tracing", "log"] }
+async-graphql-actix-web = "2.10.0"
 actix-rt = "2.2.0"
-actix-web = "3.3.2"
+#actix-web = { version = "4.0.0-beta.9" }
+actix-web = { version = "3.3.2" }
 lazy_static = "1.4.0"
 async-trait = "0.1.51"
 

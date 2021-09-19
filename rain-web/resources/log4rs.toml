@@ -34,7 +34,7 @@ level = "debug"
 appenders = ["stdout", "requests"]
 
 [loggers]
-#"sqlx::query".level = "debug"
+"sqlx::query".level = "debug"
 "actix_web::middleware::logger".level = "info"
 "actix_web::middleware::logger".appenders = ["access"]
 "actix_web::middleware::logger".additive = false

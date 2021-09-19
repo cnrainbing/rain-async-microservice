@@ -5,7 +5,7 @@ use async_graphql::Context as GraphQLContext;
 
 use actix_web::dev::Server;
 use actix_web::middleware::Logger;
-use actix_web::web::{resource, ServiceConfig};
+use actix_web::web::{resource, ServiceConfig, Data};
 use actix_web::App;
 use actix_web::{guard, HttpServer};
 use guard::{Get, Post};
@@ -86,13 +86,13 @@ fn build_actix_server(
     let server: Server = HttpServer::new(move || {
         App::new()
             .wrap(Logger::default())
-            .data(configs.clone())
-            .data(context.clone())
-            .data(schema.clone())
+            .app_data(Data::new(configs.clone()))
+            .app_data(Data::new(context.clone()))
+            .app_data(Data::new(schema.clone()))
             .configure(|cfg| register_service(cfg, configs.clone()))
     })
         .bind(address)?
-        .workers(1)
+        .workers(128)
         .max_connections(65535)
         .run();
     Ok(server)

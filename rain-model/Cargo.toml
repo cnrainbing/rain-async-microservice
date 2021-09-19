@@ -8,8 +8,7 @@ edition = "2018"
 
 [dependencies]
 rain-base = { path = "../rain-base" }
-async-graphql = { version = "2.9.15", features = ["chrono", "log"] }
-# async-graphql-actix-web = "2.9.15"
+async-graphql = { version = "2.10.0", features = ["chrono", "log"] }
 serde = { version = "1.0.130", features = ["derive"] }
 serde_json = "1.0.67"
 serde-aux = "2.3.0"
@@ -19,7 +18,7 @@ chrono = { version = "0.4.19", features = ["serde"] }
 async-trait = "0.1.51"
 regex = "1.5.4"
 lazy_static = "1.4.0"
-sqlx = { version = "0.5.7", features = ["runtime-actix-native-tls", "mysql", "chrono"] }
+sqlx = { version = "0.5.7", features = ["runtime-async-std-native-tls", "mysql", "chrono"] }
 
 
 
