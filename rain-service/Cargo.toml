@@ -10,5 +10,5 @@ rain-base = { path = "../rain-base" }
 rain-model = { path = "../rain-model" }
 rain-dao = { path = "../rain-dao" }
 async-trait = "0.1.51"
-sqlx = { version = "0.5.7", features = ["runtime-tokio-native-tls", "mysql", "chrono"] }
+sqlx = { version = "0.5.7", features = ["runtime-actix-native-tls", "mysql", "chrono"] }
 anyhow = "1.0.44"

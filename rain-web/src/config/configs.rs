@@ -34,6 +34,7 @@ pub struct Configs {
     pub server: ServerConfig,
     pub graphql: GraphQlConfig,
     pub database: DatabaseConfig,
+    pub log: LogConfig,
 }
 
 impl Configs {
@@ -146,6 +147,24 @@ impl DatabaseConfig {
             .await?;
         log::info!("初始化 '数据库' 完成");
         Ok(Arc::new(pool))
+    }
+}
+
+/// 日志相关配置
+#[derive(Deserialize, Clone, Debug)]
+pub struct LogConfig {
+    /// 日志配置文件
+    pub file: String,
+}
+
+impl LogConfig {
+    /// 初始化日志配置
+    pub fn init(config: &LogConfig) -> anyhow::Result<()> {
+        let config_dir = get_config_dir()?;
+        let result = log4rs::init_file(config_dir.join(&config.file), Default::default())
+            .context(format!("初始化日志配置:[{}]失败!", &config.file));
+        log::info!(r#"初始化 '配置文件 日志' 完成!"#);
+        result
     }
 }
 

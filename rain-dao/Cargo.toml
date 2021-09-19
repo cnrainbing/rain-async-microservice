@@ -12,5 +12,5 @@ rain-model = { path = "../rain-model" }
 anyhow = "1.0.44"
 # sqlx = {version = "0.5.7", features = ["runtime-actix-native-tls", "uuid", "postgres", "chrono"]}
 # tokio + rustls [runtime-tokio-native-tls or runtime-tokio-rustls or runtime-actix-native-tls or runtime-actix-rustls]
-sqlx = { version = "0.5.7", features = ["runtime-tokio-native-tls", "mysql", "chrono"] }
+sqlx = { version = "0.5.7", features = ["runtime-actix-native-tls", "mysql", "chrono"] }
 async-trait = "0.1.51"

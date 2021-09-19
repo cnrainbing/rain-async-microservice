@@ -19,7 +19,7 @@ chrono = { version = "0.4.19", features = ["serde"] }
 async-trait = "0.1.51"
 regex = "1.5.4"
 lazy_static = "1.4.0"
-sqlx = { version = "0.5.7", features = ["runtime-tokio-native-tls", "mysql", "chrono"] }
+sqlx = { version = "0.5.7", features = ["runtime-actix-native-tls", "mysql", "chrono"] }
 
 
 
