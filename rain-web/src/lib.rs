@@ -20,6 +20,7 @@ use crate::web::router::health_check::health_check;
 /// 工程内部mod
 pub mod config;
 pub mod web;
+pub mod error;
 
 /// 全局的 state
 pub struct Context {

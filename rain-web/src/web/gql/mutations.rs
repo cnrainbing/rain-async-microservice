@@ -11,7 +11,7 @@ pub struct UsersMutation;
 
 #[Object]
 impl UsersMutation {
-    async fn ping(&self) -> GraphqlResult<String> {
+    async fn pong(&self) -> GraphqlResult<String> {
         Ok("pong".to_string())
     }
 }
