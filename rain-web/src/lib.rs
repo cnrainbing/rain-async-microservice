@@ -8,6 +8,7 @@ use actix_web::middleware::Logger;
 use actix_web::web::{resource, ServiceConfig, Data};
 use actix_web::App;
 use actix_web::{guard, HttpServer};
+use actix_web_requestid::{RequestIDService};
 use guard::{Get, Post};
 
 use crate::web::gql::{GraphqlResult, graphiql, graphql, ServiceSchema};
@@ -86,6 +87,7 @@ fn build_actix_server(
 ) -> anyhow::Result<Server> {
     let server: Server = HttpServer::new(move || {
         App::new()
+            .wrap(RequestIDService::default())
             .wrap(Logger::default())
             .app_data(Data::new(configs.clone()))
             .app_data(Data::new(context.clone()))

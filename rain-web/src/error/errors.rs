@@ -26,8 +26,6 @@ pub enum AppError {
 }
 
 impl AppError {
-    //  2021-04-25 00:16:38 错误处理先这样吧 以后有了更好的再处理 总归服务器的错误不应该暴露到客户端去.
-    /// 返回错误扩展并输出日志的闭包
     pub fn log_extend(self) -> Box<dyn FnOnce(anyhow::Error) -> AgError> {
         Box::new(move |error| {
             // 日志打印输出的位置包路径显然不对, 思考能不能找到最初的位置

@@ -42,4 +42,24 @@ impl UsersQuery {
             .await
             .map_err(AppError::InternalError.log_extend())?)
     }
+
+    /// 根据用户名查询用户2
+    async fn find_by_username2(&self, ctx: &Context<'_>, username: String) -> GraphqlResult<User> {
+        let pool = rainContext::get_pool(ctx)?;
+        Ok(UsersService::find_by_username2(&pool, &username)
+            .await
+            .map_err(AppError::InternalError.log_extend())?)
+    }
+
+    /// 根据邮箱查询用户
+    async fn find_by_email(
+        &self,
+        ctx: &Context<'_>,
+        email: String,
+    ) -> GraphqlResult<Option<User>> {
+        let pool = rainContext::get_pool(ctx)?;
+        Ok(UsersService::find_by_email(&pool, &email)
+            .await
+            .map_err(AppError::InternalError.log_extend())?)
+    }
 }

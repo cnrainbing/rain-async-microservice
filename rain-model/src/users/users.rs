@@ -4,7 +4,7 @@ use serde::Serialize;
 use chrono::{DateTime, Utc, Local};
 use validator::Validate;
 use crate::constant::USERNAME_REGEX;
-use sqlx::FromRow;
+use sqlx::{FromRow};
 
 #[derive(SimpleObject,FromRow, Deserialize, Serialize)]
 #[graphql(complex)]
@@ -14,6 +14,8 @@ pub struct User {
     pub nickname: String,
     pub email: String,
     pub email_verified: i8,
+    #[graphql(skip)]
+    #[serde(skip_serializing)]
     pub password_hash: String,
     pub active: i8,
     #[graphql(skip)]
@@ -38,12 +40,12 @@ impl User {
 pub struct CreateUser {
     #[validate(regex(path = "USERNAME_REGEX", message = "用户名不符合要求"))]
     pub username: String,
+    #[validate(length(min = 3, message = "昵称不符合"))]
+    pub nickname: String,
     #[validate(email(message = "邮箱不符合"))]
     pub email: String,
     #[validate(length(min = 6, message = "密码不符合"))]
     pub password: String,
-    #[validate(length(min = 3, message = "昵称不符合"))]
-    pub nickname: String,
 }
 
 /// 用户注册
