@@ -34,6 +34,7 @@ level = "debug"
 appenders = ["stdout", "requests"]
 
 [loggers]
+"rain_web".level = "debug"
 "sqlx::query".level = "debug"
 "actix_web::middleware::logger".level = "info"
 "actix_web::middleware::logger".appenders = ["access"]

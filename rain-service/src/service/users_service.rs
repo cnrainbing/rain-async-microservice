@@ -20,6 +20,12 @@ pub trait IUsersService {
 
     /// 根据邮箱查询查询用户
     async fn find_by_email(pool: &MySqlPool, email: &str) -> Result<Option<User>>;
+
+    /// 检查用户是否存在
+    async fn exists_by_username(pool: &MySqlPool, username: &str) -> Result<bool>;
+
+    /// 检查邮箱是否存在
+    async fn exists_by_email(pool: &MySqlPool, email: &str) -> Result<bool>;
 }
 
 #[async_trait]
@@ -38,5 +44,13 @@ impl IUsersService for UsersService {
 
     async fn find_by_email(pool: &MySqlPool, email: &str) -> Result<Option<User>> {
         UserRepository::find_by_email(pool, email).await
+    }
+
+    async fn exists_by_username(pool: &MySqlPool, username: &str) -> Result<bool> {
+        UserRepository::exists_by_username(pool, username).await
+    }
+
+    async fn exists_by_email(pool: &MySqlPool, email: &str) -> Result<bool> {
+        UserRepository::exists_by_email(pool, email).await
     }
 }

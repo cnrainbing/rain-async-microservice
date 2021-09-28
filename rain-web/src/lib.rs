@@ -6,8 +6,7 @@ use async_graphql::Context as GraphQLContext;
 use actix_web::dev::Server;
 use actix_web::middleware::Logger;
 use actix_web::web::{resource, ServiceConfig, Data};
-use actix_web::App;
-use actix_web::{guard, HttpServer};
+use actix_web::{App, middleware,guard, HttpServer};
 use actix_web_requestid::{RequestIDService};
 use guard::{Get, Post};
 
@@ -87,6 +86,7 @@ fn build_actix_server(
 ) -> anyhow::Result<Server> {
     let server: Server = HttpServer::new(move || {
         App::new()
+            .wrap(middleware::DefaultHeaders::new().header("X-Version", "1.0.0"))
             .wrap(RequestIDService::default())
             .wrap(Logger::default())
             .app_data(Data::new(configs.clone()))

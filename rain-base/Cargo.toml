@@ -9,3 +9,4 @@ edition = "2018"
 [dependencies]
 serde = "1.0.130"
 md5 = "0.7.0"
+sha2 = "0.9.8"
