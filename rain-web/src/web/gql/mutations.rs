@@ -48,7 +48,7 @@ impl UsersMutation {
         // 密码哈希
         let password_hash = "123456";
 
-        let id = UsersService::user_register(&pool, &new_user, &password_hash).await?;
+        let id: u64 = UsersService::user_register(&pool, &new_user, &password_hash).await?;
         Ok(id)
     }
 }

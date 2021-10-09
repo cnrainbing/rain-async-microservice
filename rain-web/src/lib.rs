@@ -4,7 +4,7 @@ use sqlx::{MySqlPool, MySql, Pool};
 use async_graphql::Context as GraphQLContext;
 
 use actix_web::dev::Server;
-use actix_web::middleware::Logger;
+use actix_web::middleware::{Logger,Compress};
 use actix_web::web::{resource, ServiceConfig, Data};
 use actix_web::{App, middleware,guard, HttpServer};
 use actix_web_requestid::{RequestIDService};
@@ -88,6 +88,7 @@ fn build_actix_server(
         App::new()
             .wrap(middleware::DefaultHeaders::new().header("X-Version", "1.0.0"))
             .wrap(RequestIDService::default())
+            .wrap(Compress::default())
             .wrap(Logger::default())
             .app_data(Data::new(configs.clone()))
             .app_data(Data::new(context.clone()))
