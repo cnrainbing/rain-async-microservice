@@ -1,12 +1,13 @@
 use async_graphql::{SimpleObject, ComplexObject, InputObject};
 use serde::Deserialize;
 use serde::Serialize;
-use chrono::{DateTime, Utc, Local};
+//use chrono::{DateTime, Local, prelude::*};
+//use chrono::format::{DelayedFormat, StrftimeItems};
 use validator::Validate;
 use crate::constant::USERNAME_REGEX;
 use sqlx::{FromRow};
 
-#[derive(SimpleObject,FromRow, Deserialize, Serialize)]
+#[derive(SimpleObject, FromRow, Deserialize, Serialize)]
 #[graphql(complex)]
 pub struct User {
     pub id: u64,
@@ -19,19 +20,31 @@ pub struct User {
     pub password_hash: String,
     pub active: i8,
     #[graphql(skip)]
-    pub created_at: Option<DateTime<Utc>>,
+    pub created_at: Option<i64>,
     #[graphql(skip)]
-    pub updated_at: Option<DateTime<Utc>>,
+    pub updated_at: Option<i64>,
+    //#[graphql(skip)]
+    //pub updated_at: Option<DateTime<Utc>>,
+
 }
 
 #[ComplexObject]
 impl User {
-    async fn created_at(&self) -> DateTime<Local> {
-        self.created_at.unwrap().with_timezone(&Local)
+    async fn created_at(&self) -> i64 {
+        /*let millis: i64 = self.created_at.unwrap();
+        let dt: DateTime<Local> = Local.timestamp_millis(millis);
+        let fmt = "%Y-%m-%d %H:%M:%S:%3f";
+        let dft: DelayedFormat<StrftimeItems> = dt.format(fmt);
+        dft.to_string()*/
+        self.created_at.unwrap()
     }
 
-    async fn updated_at(&self) -> DateTime<Local> {
+    /*async fn updated_at(&self) -> DateTime<Local> {
         self.updated_at.unwrap().with_timezone(&Local)
+    }*/
+
+    async fn updated_at(&self) -> i64 {
+        self.updated_at.unwrap()
     }
 }
 

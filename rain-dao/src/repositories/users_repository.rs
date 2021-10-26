@@ -51,11 +51,18 @@ impl IUsersRepository for UserRepository {
 
     /// 根据用户名查询用户
     async fn find_by_username(pool: &MySqlPool, username: &str) -> Result<Option<User>> {
-        let row = sqlx::query_as!(
+        /*let row = sqlx::query_as!(
             User,
             "SELECT * FROM t_users WHERE username = ?",
             username
         ).fetch_optional(pool).await.context("查询用户")?;
+        Ok(row)*/
+        let sql: &str = r#"SELECT * FROM t_users WHERE username = ?"#;
+        let row: Option<User> = sqlx::query_as(sql)
+            .bind(username)
+            .fetch_optional(pool)
+            .await
+            .context("查询用户")?;
         Ok(row)
     }
 

@@ -96,7 +96,7 @@ fn build_actix_server(
             .configure(|cfg| register_service(cfg, configs.clone()))
     })
         .bind(address)?
-        .workers(128)
+        .workers(64)
         .max_connections(65535)
         .run();
     Ok(server)

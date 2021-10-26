@@ -29,13 +29,13 @@ graphiql.enable = true
 ## 数据库用户名
 username = "root"
 ## 数据库密码
-password = "123456"
+password = "12345678"
 ## 数据地址
 host = "127.0.0.1"
 ## 数据库端口
 port = 3306
 ## 数据库名
-database_name = "finance_margin"
+database_name = "rainbing"
 ## 数据库max连接数
 max_connections = 64
 ## 数据库min连接数
