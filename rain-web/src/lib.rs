@@ -4,9 +4,9 @@ use sqlx::{MySqlPool, MySql, Pool};
 use async_graphql::Context as GraphQLContext;
 
 use actix_web::dev::Server;
-use actix_web::middleware::{Logger,Compress};
+use actix_web::middleware::{Logger, Compress};
 use actix_web::web::{resource, ServiceConfig, Data};
-use actix_web::{App, middleware,guard, HttpServer};
+use actix_web::{App, middleware, guard, HttpServer};
 use actix_web_requestid::{RequestIDService};
 use guard::{Get, Post};
 
@@ -98,6 +98,8 @@ fn build_actix_server(
         .bind(address)?
         .workers(64)
         .max_connections(65535)
+        // <- 设置关机超时时间为20s.
+        .shutdown_timeout(20)
         .run();
     Ok(server)
 }
