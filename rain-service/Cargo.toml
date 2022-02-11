@@ -12,3 +12,4 @@ rain-dao = { path = "../rain-dao" }
 async-trait = "0.1.51"
 sqlx = { version = "0.5.7", features = ["runtime-async-std-native-tls", "mysql", "chrono"] }
 anyhow = "1.0.44"
+actix-web-actors = "3.0.0"

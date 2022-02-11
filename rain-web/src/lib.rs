@@ -16,7 +16,6 @@ use crate::config::configs::{Configs, DatabaseConfig};
 use rain_model::constant::{USERNAME_REGEX, EMAIL_REGEX};
 use crate::web::router::health_check::health_check;
 
-
 /// 工程内部mod
 pub mod config;
 pub mod web;
@@ -96,7 +95,7 @@ fn build_actix_server(
             .configure(|cfg| register_service(cfg, configs.clone()))
     })
         .bind(address)?
-        .workers(64)
+        .workers(128)
         .max_connections(65535)
         // <- 设置关机超时时间为20s.
         .shutdown_timeout(20)
